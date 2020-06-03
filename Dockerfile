@@ -17,8 +17,7 @@ RUN set -x && \
   install2.r --error --ncpus -1 --repos 'http://mran.revolutionanalytics.com/snapshot/2020-05-30' \
     knitr \
     usethis \
-    lintr \
-    roxygen2 && \
+    lintr && \
   installGithub.r \
     r-lib/revdepcheck \
     r-spatial/sf && \

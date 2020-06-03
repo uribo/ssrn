@@ -2,14 +2,30 @@ Package: ssrn
 Title: Scan Statistics for Railway Network
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "Shinya",
-           family = "Uryu",
-           role = c("aut", "cre"),
-           email = "suika1127@gmail.com",
-           comment = c(ORCID = "0000-0002-0493-6186"))
+    c(person(given = "Shinya",
+             family = "Uryu",
+             role = c("aut", "cre"),
+             email = "suika1127@gmail.com",
+             comment = c(ORCID = "0000-0002-0493-6186")),
+      person(given = "Yuta",
+             family = "Tanoue",
+             role = c("aut")),
+      person(given = "Daisuke",
+             family = "Yoneoka",
+             role = c("aut")))       
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
+Depends: 
+    R (>= 3.2.0)
+Imports:
+    dplyr (>= 1.0.0),
+    magrittr (>= 1.5),
+    purrr (>= 0.3.4),
+    rlang (>= 0.4.6),
+    stringr (>= 1.4.0),
+    tibble (>= 3.0.1),
+    tidyr (>= 1.1.0)
