@@ -4,20 +4,34 @@
 \alias{make_passenger_od}
 \title{Summarise a passenger volume}
 \usage{
-make_passenger_od(passenger, stations, depart, arrive, location, value)
+make_passenger_od(
+  passenger,
+  stations,
+  depart,
+  arrive,
+  location,
+  value,
+  .all = FALSE
+)
 }
 \arguments{
 \item{passenger}{passenger data}
 
-\item{stations}{data.frame which set of stopping points recorded in order of stopping.}
+\item{stations}{data.frame which set of stopping points recorded in order of
+stopping.}
 
 \item{depart}{Column name of a stop.}
 
-\item{arrive}{Give the name of the column indicating the next stop at the target stop.}
+\item{arrive}{Give the name of the column indicating the next stop at the
+target stop.}
 
-\item{location}{Name of the variable to use for the join, indicating its location.}
+\item{location}{Name of the variable to use for the join, indicating
+its location.}
 
 \item{value}{origin-destination value name}
+
+\item{.all}{Make a join that contains rows of two datasets.
+The default value is \emph{FALSE}.}
 }
 \description{
 Summarise a passenger volume

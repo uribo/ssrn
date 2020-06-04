@@ -2,9 +2,12 @@
 #'
 #' @inheritParams make_passenger_matrix
 #' @inheritParams make_adjacency_matrix
-#' @param location Name of the variable to use for the join, indicating its location.
+#' @param location Name of the variable to use for the join, indicating
+#' its location.
+#' @param .all Make a join that contains rows of two datasets.
+#' The default value is *FALSE*.
 #' @export
-make_passenger_od <- function(passenger, stations, depart, arrive, location, value) {
+make_passenger_od <- function(passenger, stations, depart, arrive, location, value, .all = FALSE) { # nolint
   volume <- NULL
   by_1 <-  rlang::set_names(rlang::quo_name(rlang::enquo(location)),
                             rlang::quo_name(rlang::enquo(depart)))
@@ -13,12 +16,26 @@ make_passenger_od <- function(passenger, stations, depart, arrive, location, val
   d <- sum_od_volume(passenger = passenger,
                      departure = {{ depart }},
                      arrive = {{ arrive }},
-                     volume = {{ value }}) %>%
-    dplyr::full_join(stations,
-                     by = by_1) %>%
-    dplyr::full_join(stations[c(rlang::quo_name(rlang::enquo(location)))],
-                     by = by_2)
-  summary_vars <- rlang::syms(c(stringr::str_subset(names(d), "volume", negate = TRUE)))
+                     volume = {{ value }})
+  if (.all == TRUE) {
+    d <-
+      d %>%
+      dplyr::full_join(stations,
+                       by = by_1) %>%
+      dplyr::full_join(stations[c(rlang::quo_name(rlang::enquo(location)))],
+                       by = by_2)
+  } else {
+    d <-
+      d %>%
+      dplyr::left_join(stations,
+                       by = by_1) %>%
+      dplyr::left_join(stations[c(rlang::quo_name(rlang::enquo(location)))],
+                       by = by_2)
+  }
+
+  summary_vars <- rlang::syms(c(stringr::str_subset(names(d),
+                                                    "volume",
+                                                    negate = TRUE)))
   d %>%
     dplyr::group_by(!!!summary_vars) %>%
     dplyr::summarise(volume = sum(volume),
