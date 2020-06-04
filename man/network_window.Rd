@@ -7,7 +7,8 @@
 network_window(adjacency_matrix, dist_matrix, type, cluster_max)
 }
 \arguments{
-\item{adjacency_matrix}{A boolean matrix, with element (\emph{i},\emph{j}) set to TRUE if location \emph{j} is adjacent to location \emph{i}.}
+\item{adjacency_matrix}{A boolean matrix, with element (\emph{i},\emph{j}) set
+to TRUE if location \emph{j} is adjacent to location \emph{i}.}
 
 \item{dist_matrix}{Distance matrix}
 
@@ -15,7 +16,8 @@ network_window(adjacency_matrix, dist_matrix, type, cluster_max)
 
 \item{cluster_max}{Maximum cluster size.
 Zone If this value is reached, the area will not be expanded any further.
-It's a good idea to keep it to the number of stops on the line you're dealing with.}
+It's a good idea to keep it to the number of stops on the line you're
+dealing with.}
 }
 \description{
 Create network window zones

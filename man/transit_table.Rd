@@ -7,7 +7,8 @@
 transit_table(stations, ..., reverse = FALSE)
 }
 \arguments{
-\item{stations}{data.frame which set of stopping points recorded in order of stopping.}
+\item{stations}{data.frame which set of stopping points recorded in order of
+stopping.}
 
 \item{...}{
   Arguments passed on to \code{\link[dplyr:across]{dplyr::across}}

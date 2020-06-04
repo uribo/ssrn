@@ -9,11 +9,13 @@ make_passenger_matrix(passenger, stations, depart, arrive, value)
 \arguments{
 \item{passenger}{passenger data}
 
-\item{stations}{data.frame which set of stopping points recorded in order of stopping.}
+\item{stations}{data.frame which set of stopping points recorded in order of
+stopping.}
 
 \item{depart}{Column name of a stop.}
 
-\item{arrive}{Give the name of the column indicating the next stop at the target stop.}
+\item{arrive}{Give the name of the column indicating the next stop at the
+target stop.}
 
 \item{value}{origin-destination value name}
 }

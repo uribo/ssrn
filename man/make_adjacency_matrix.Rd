@@ -7,11 +7,13 @@
 make_adjacency_matrix(stations, depart, arrive)
 }
 \arguments{
-\item{stations}{data.frame which set of stopping points recorded in order of stopping.}
+\item{stations}{data.frame which set of stopping points recorded in order of
+stopping.}
 
 \item{depart}{Column name of a stop.}
 
-\item{arrive}{Give the name of the column indicating the next stop at the target stop.}
+\item{arrive}{Give the name of the column indicating the next stop at the
+target stop.}
 }
 \description{
 Convert station data to adjacency matrix

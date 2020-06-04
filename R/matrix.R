@@ -1,8 +1,10 @@
 #' Convert station data to adjacency matrix
 #'
-#' @param stations data.frame which set of stopping points recorded in order of stopping.
+#' @param stations data.frame which set of stopping points recorded in order of
+#' stopping.
 #' @param depart Column name of a stop.
-#' @param arrive Give the name of the column indicating the next stop at the target stop.
+#' @param arrive Give the name of the column indicating the next stop at the
+#' target stop.
 #' @export
 #' @rdname make_adjacency_matrix
 make_adjacency_matrix <- function(stations, depart, arrive) {
@@ -35,23 +37,28 @@ make_passenger_matrix <- function(passenger, stations,
     make_pass_volume(transit_table(stations)) %>%
     dplyr::filter(!is.na({{ arrive }})) %>%
     dplyr::group_by({{ depart }}, {{ arrive }}) %>%
-    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE), .groups = "drop")
+    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE),
+                     .groups = "drop")
   d02 <-
     passenger %>%
     make_pass_volume(transit_table(stations, reverse = TRUE)) %>%
     dplyr::filter(!is.na({{ arrive }})) %>%
     dplyr::group_by({{ depart }}, {{ arrive }}) %>%
-    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE), .groups = "drop")
+    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE),
+                     .groups = "drop")
   d_tmp <-
     rbind(d01, d02)
   d <-
     passenger %>%
     dplyr::group_by({{ depart }}, {{ arrive }}) %>%
-    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE), .groups = "drop") %>%
+    dplyr::summarise({{ value }} := sum({{ value }}, na.rm = TRUE),
+                     .groups = "drop") %>%
     dplyr::filter(!is.na({{ arrive }})) %>%
     dplyr::right_join(tidyr::expand_grid(
-      st_name = unique(c(unique(d_tmp$st_name), unique(d_tmp$next_st_name))),
-      next_st_name = unique(c(unique(d_tmp$st_name), unique(d_tmp$next_st_name)))
+      st_name = unique(c(unique(d_tmp$st_name),
+                         unique(d_tmp$next_st_name))),
+      next_st_name = unique(c(unique(d_tmp$st_name),
+                              unique(d_tmp$next_st_name)))
     ),
     by = c("st_name", "next_st_name"))
   d %>%
