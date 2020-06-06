@@ -4,7 +4,7 @@
 \alias{make_passenger_matrix}
 \title{Convert passenger and station data to origin-destination matrix}
 \usage{
-make_passenger_matrix(passenger, stations, depart, arrive, value)
+make_passenger_matrix(passenger, stations, depart, arrive, location, value)
 }
 \arguments{
 \item{passenger}{passenger data}
@@ -17,8 +17,19 @@ stopping.}
 \item{arrive}{Give the name of the column indicating the next stop at the
 target stop.}
 
+\item{location}{Name of the variable to use for the join, indicating
+its location.}
+
 \item{value}{origin-destination value name}
 }
 \description{
 Convert passenger and station data to origin-destination matrix
+}
+\examples{
+jreast_jt_od \%>\%
+  make_passenger_matrix(jreast_jt,
+                        departure_st_code,
+                        arrive_st_code,
+                        st_code,
+                        volume)
 }

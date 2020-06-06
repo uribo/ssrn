@@ -6,6 +6,17 @@
 #' its location.
 #' @param .all Make a join that contains rows of two datasets.
 #' The default value is *FALSE*.
+#' @examples
+#' jreast_jt_od %>%
+#'   make_passenger_od(jreast_jt,
+#'                     depart = departure_st_code,
+#'                     arrive_st_code,
+#'                     location = st_code,
+#'                     value = volume) %>%
+#'  dplyr::left_join(jreast_jt %>%
+#'                     dplyr::select(arrive_st_code = st_code,
+#'                                   next_st_name = st_name),
+#'                    by = "arrive_st_code")
 #' @export
 make_passenger_od <- function(passenger, stations, depart, arrive, location, value, .all = FALSE) { # nolint
   volume <- NULL

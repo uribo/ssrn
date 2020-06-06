@@ -3,6 +3,13 @@
 #' @inheritParams make_adjacency_matrix
 #' @inheritDotParams dplyr::across -.fns -.names
 #' @param reverse Option to swap the order of the stopping points.
+#' @examples
+#' # The next stop is stored in the variable of column next_.
+#' jreast_jt %>%
+#'   transit_table()
+#' # Switch between inbound and outbound lines.
+#' jreast_jt %>%
+#'   transit_table(reverse = TRUE)
 #' @export
 transit_table <- function(stations, ..., reverse = FALSE) {
   if (reverse == TRUE) {

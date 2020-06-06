@@ -23,3 +23,11 @@ Because \code{across()} is used within functions like \code{summarise()} and
 \description{
 Create transit table
 }
+\examples{
+# The next stop is stored in the variable of column next_.
+jreast_jt \%>\%
+  transit_table()
+# Switch between inbound and outbound lines.
+jreast_jt \%>\%
+  transit_table(reverse = TRUE)
+}

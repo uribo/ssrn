@@ -1,6 +1,7 @@
 Package: ssrn
 Title: Scan Statistics for Railway Network
 Version: 0.0.0.9000
+Date: 2020-06-05
 Authors@R: 
     c(person(given = "Shinya",
              family = "Uryu",
@@ -29,3 +30,5 @@ Imports:
     stringr (>= 1.4.0),
     tibble (>= 3.0.1),
     tidyr (>= 1.1.0)
+Suggests: 
+    testthat

@@ -18,3 +18,6 @@ target stop.}
 \description{
 Convert station data to adjacency matrix
 }
+\examples{
+make_adjacency_matrix(jreast_jt, st_code, next_st_code)
+}

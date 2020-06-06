@@ -36,3 +36,15 @@ The default value is \emph{FALSE}.}
 \description{
 Summarise a passenger volume
 }
+\examples{
+jreast_jt_od \%>\%
+  make_passenger_od(jreast_jt,
+                    depart = departure_st_code,
+                    arrive_st_code,
+                    location = st_code,
+                    value = volume) \%>\%
+ dplyr::left_join(jreast_jt \%>\%
+                    dplyr::select(arrive_st_code = st_code,
+                                  next_st_name = st_name),
+                   by = "arrive_st_code")
+}
