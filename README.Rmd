@@ -25,7 +25,9 @@ The goal of ssrn is to ...
 You can install the development version of ssrn from GitHub with:
 
 ``` r
-install.packages("remotes")
+if (!requireNamespace("remotes"))
+  install.packages("remotes")
+
 remotes::install_github("uribo/ssrn")
 ```
 
