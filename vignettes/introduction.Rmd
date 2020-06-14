@@ -1,38 +1,20 @@
 ---
-output: github_document
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
 ```
 
-# ssrn
-
-<!-- badges: start -->
-[![R build status](https://github.com/uribo/ssrn/workflows/R-CMD-check/badge.svg)](https://github.com/uribo/ssrn/actions) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/ssrn)](https://cran.r-project.org/package=ssrn) [![minimal R version](https://img.shields.io/badge/R%3E%3D-3.2.0-blue.svg)](https://cran.r-project.org/)
-<!-- badges: end -->
-
 The goal of **ssrn** is to implement the algorithm provided in "*Scan for estimating the transmission route of COVID-19 on railway network using passenger volume*". It is a generalization of the scan statistic approach for railway network to identify the hot railway route for transmitting infectious diseases.
-
-## Installation
-
-You can install the development version of ssrn from GitHub with:
-
-``` r
-if (!requireNamespace("remotes"))
-  install.packages("remotes")
-
-remotes::install_github("uribo/ssrn")
-```
-
-## Example
 
 Below are some of the features of the package, using the built-in dataset (a section of JR's Tokaido Line).
 
@@ -56,7 +38,6 @@ Prepare a matrix object to detect hotspots from spatial relationships on the rai
 
 - Make an adjacency matrix of stations with `make_adjacency_matrix()`.
 - Create a distance matrix with `make_passenger_matrix()` based on the passenger volumes.
-- `network_window()` set the zone from the railway network.
 
 ```{r, eval = TRUE}
 adj <- 
@@ -99,7 +80,7 @@ zones
 
 ## Estimate hot railway route
 
-Apply the method of spatial scan statistics based on the zone. Here's an example of applying dummy data in the [scanstatistics](https://cran.r-project.org/package=scanstatistics).
+Apply the method of spatial scan statistics based on the zone.
 
 ```{r}
 counts <-
@@ -139,43 +120,3 @@ df_zones <-
   tidyr::unnest(cols = st_name)
 df_zones
 ```
-
-```{r, eval=FALSE, echo = FALSE}
-library(sf)
-jreast_jt_sf <-
-  jreast_jt %>% 
-  mutate(geometry = st_sfc(
-    st_point(c(139.766, 35.6802)),
-    st_point(c(139.7585, 35.6663)),
-    st_point(c(139.7391, 35.6287)),
-    st_point(c(139.6968, 35.53137)),
-    st_point(c(139.6223, 35.4658)),
-    st_point(c(139.5343, 35.40044)),
-    st_point(c(139.5313, 35.35411)),
-    st_point(c(139.4864, 35.33883)),
-    st_point(c(139.4459, 35.33685)),
-    st_point(c(139.408, 35.33065)),
-    st_point(c(139.349, 35.32756)),
-    st_point(c(139.3133, 35.31146)),
-    st_point(c(139.2568, 35.29867)),
-    st_point(c(139.215, 35.2814)),
-    st_point(c(139.1802, 35.27573)),
-    st_point(c(139.1558, 35.2561)),
-    st_point(c(139.145, 35.23872)),
-    st_point(c(139.1386, 35.20258)),
-    st_point(c(139.1323, 35.15693)),
-    st_point(c(139.1022, 35.14613)),
-    crs = 4326)) %>% 
-  sf::st_sf()
-```
-
-```{r, eval = FALSE, echo = FALSE}
-jreast_jt_sf %>%
-  left_join(df_zones, by = "st_name") %>% 
-  mapview::mapview(zcol = "cluster")
-```
-
-![](man/figures/README-jtzones-1.png)
-
-
-

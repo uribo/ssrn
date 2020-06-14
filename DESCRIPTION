@@ -14,7 +14,12 @@ Authors@R:
       person(given = "Daisuke",
              family = "Yoneoka",
              role = c("aut")))       
-Description: What the package does (one paragraph).
+Description: Implement the algorithm provided in scan for estimating the 
+  transmission route on railway network using passenger volume. It is a 
+  generalization of the scan statistic approach for railway network to identify
+  the hot railway route for transmitting infectious diseases. 
+URL: https://github.com/uribo/ssrn
+BugReports: https://github.com/uribo/ssrn/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -31,4 +36,8 @@ Imports:
     tibble (>= 3.0.1),
     tidyr (>= 1.1.0)
 Suggests: 
-    testthat
+    testthat,
+    scanstatistics,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

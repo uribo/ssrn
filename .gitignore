@@ -2,3 +2,4 @@
 .Rhistory
 .env
 data-raw/mlit_transport12/
+inst/doc

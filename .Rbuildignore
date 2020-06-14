@@ -6,3 +6,4 @@
 ^docker-compose\.yml$
 ^\.env$
 ^data-raw$
+^\.github$

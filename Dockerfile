@@ -14,11 +14,14 @@ RUN set -x && \
   echo "GITHUB_PAT=$GITHUB_PAT" >> /usr/local/lib/R/etc/Renviron
 
 RUN set -x && \
-  install2.r --error --ncpus -1 --repos 'http://mran.revolutionanalytics.com/snapshot/2020-05-30' \
+  install2.r --error --ncpus -1 --repos 'http://mran.revolutionanalytics.com/snapshot/2020-06-12' \
     knitr \
-    usethis \
-    lintr && \
+    lintr \
+    scanstatistics \
+    usethis && \
   installGithub.r \
     r-lib/revdepcheck \
+    r-lib/rcmdcheck \
+    r-hub/rhub \
     r-spatial/sf && \
   rm -rf /tmp/downloaded_packages/ /tmp/*.rds
