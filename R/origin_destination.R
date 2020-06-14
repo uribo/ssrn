@@ -1,4 +1,4 @@
-#' Summarise a passenger volume
+#' Summaries a passenger volume
 #'
 #' @inheritParams make_passenger_matrix
 #' @inheritParams make_adjacency_matrix

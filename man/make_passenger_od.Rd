@@ -2,7 +2,7 @@
 % Please edit documentation in R/origin_destination.R
 \name{make_passenger_od}
 \alias{make_passenger_od}
-\title{Summarise a passenger volume}
+\title{Summaries a passenger volume}
 \usage{
 make_passenger_od(
   passenger,
@@ -34,7 +34,7 @@ its location.}
 The default value is \emph{FALSE}.}
 }
 \description{
-Summarise a passenger volume
+Summaries a passenger volume
 }
 \examples{
 jreast_jt_od \%>\%
