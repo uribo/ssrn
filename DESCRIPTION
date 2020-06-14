@@ -37,7 +37,4 @@ Imports:
     tidyr (>= 1.1.0)
 Suggests: 
     testthat,
-    scanstatistics,
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    scanstatistics
